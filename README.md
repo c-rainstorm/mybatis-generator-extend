@@ -4,14 +4,19 @@
   - [clone or download this rep](#clone-or-download-this-rep)
   - [open in IDEA directly](#open-in-idea-directly)
   - [add `generatorConfig.properties`](#add-generatorconfigproperties)
-  - [run `mybatis-generator` already configed](#run-mybatis-generator-already-configed)
-  - [Advented](#advented)
+  - [run `mybatis-generator`](#run-mybatis-generator)
+  - [Example](#example)
+  - [At Last](#at-last)
 
 ## clone or download this rep
 
 ## open in IDEA directly
 
 There is an runConfigurations `.idea/runConfigurations/mybatis_generator.xml` ready to use.
+
+- tips: may need setup JDK && Add as Maven Project
+- tips: may need setup JDK && Add as Maven Project
+- tips: may need setup JDK && Add as Maven Project
 
 ## add `generatorConfig.properties`
 
