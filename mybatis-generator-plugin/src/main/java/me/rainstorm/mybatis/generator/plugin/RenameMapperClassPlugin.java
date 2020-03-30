@@ -1,4 +1,4 @@
-package me.rainstorm.boot.mybatis.generator.plugin;
+package me.rainstorm.mybatis.generator.plugin;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;

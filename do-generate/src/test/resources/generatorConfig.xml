@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <properties url="${mybatis.generator.generatorConfig.properties}"/>
-    <context id="boot" targetRuntime="MyBatis3">
+    <context id="mybatis" targetRuntime="MyBatis3">
         <property name="javaFileEncoding" value="UTF-8"/>
-        <plugin type="me.rainstorm.boot.mybatis.generator.plugin.UpdatedLombokPlugin">
+        <plugin type="me.rainstorm.mybatis.generator.plugin.UpdatedLombokPlugin">
             <!-- enable annotations -->
             <property name="builder" value="false"/>
             <!-- annotation's option(boolean) -->
@@ -21,7 +21,15 @@
             <!-- disable annotations -->
             <property name="allArgsConstructor" value="false"/>
         </plugin>
-
+        <!--
+             修改 mapper 的后缀，
+             domainObjectRenamingRule 将 domain 对象后缀修改 XXXDO，mapper 默认后缀就变为 DOMapper，
+             该配置将后缀重新改为 Mapper
+         -->
+        <plugin type="me.rainstorm.mybatis.generator.plugin.RenameMapperClassPlugin">
+            <property name="searchString" value="DOMapper$"/>
+            <property name="replaceString" value="Mapper"/>
+        </plugin>
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
@@ -53,7 +61,6 @@
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src/main/resources">
-            <property name="trimStrings" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="${mapper.package}" targetProject="src/main/java">
@@ -66,8 +73,8 @@
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false">
-<!--            <generatedKey column="id" sqlStatement="mysql"/>-->
-            <!--            <ignoreColumn column="_timestamp"/>-->
+            <!--            <generatedKey column="id" sqlStatement="mysql"/>-->
+            <domainObjectRenamingRule searchString="$" replaceString="DO"/>
         </table>
     </context>
 </generatorConfiguration>
